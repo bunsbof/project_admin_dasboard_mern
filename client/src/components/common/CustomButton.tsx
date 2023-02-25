@@ -29,6 +29,7 @@ const CustomButton = ({
           backgroundColor,
         },
       }}
+      type={type === "submit" ? "submit" : "button"}
       onClick={handleClick}
     >
       {icon}
