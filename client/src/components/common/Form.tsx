@@ -10,6 +10,7 @@ import {
   MenuItem,
   Button,
 } from "@pankod/refine-mui";
+
 import { FormProps } from "interfaces/common";
 import CustomButton from "./CustomButton";
 
@@ -27,6 +28,7 @@ const Form = ({
       <Typography fontSize={25} fontWeight={700} color="#11142d">
         {type} a Property
       </Typography>
+
       <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#fcfcfc">
         <form
           style={{
@@ -67,7 +69,7 @@ const Form = ({
                 color: "#11142d",
               }}
             >
-              Enter property description
+              Enter Description
             </FormHelperText>
             <TextareaAutosize
               minRows={5}
@@ -86,6 +88,7 @@ const Form = ({
               {...register("description", { required: true })}
             />
           </FormControl>
+
           <Stack direction="row" gap={4}>
             <FormControl sx={{ flex: 1 }}>
               <FormHelperText
@@ -93,7 +96,7 @@ const Form = ({
                   fontWeight: 500,
                   margin: "10px 0",
                   fontSize: 16,
-                  color: "#11142b",
+                  color: "#11142d",
                 }}
               >
                 Select Property Type
@@ -103,13 +106,15 @@ const Form = ({
                 color="info"
                 displayEmpty
                 required
-                inputProps={{ "aria-label": "without label" }}
+                inputProps={{ "aria-label": "Without label" }}
                 defaultValue="apartment"
-                {...register("propertyType", { required: true })}
+                {...register("propertyType", {
+                  required: true,
+                })}
               >
                 <MenuItem value="apartment">Apartment</MenuItem>
                 <MenuItem value="villa">Villa</MenuItem>
-                <MenuItem value="farmhouse">Farmhouse</MenuItem>
+                <MenuItem value="farmhouse">farmhouse</MenuItem>
                 <MenuItem value="condos">Condos</MenuItem>
                 <MenuItem value="townhouse">Townhouse</MenuItem>
                 <MenuItem value="duplex">Duplex</MenuItem>
@@ -133,12 +138,13 @@ const Form = ({
                 required
                 id="outlined-basic"
                 color="info"
-                variant="outlined"
                 type="number"
+                variant="outlined"
                 {...register("price", { required: true })}
               />
             </FormControl>
           </Stack>
+
           <FormControl>
             <FormHelperText
               sx={{
@@ -148,7 +154,7 @@ const Form = ({
                 color: "#11142d",
               }}
             >
-              Enter location
+              Enter Location
             </FormHelperText>
             <TextField
               fullWidth
@@ -170,23 +176,23 @@ const Form = ({
               >
                 Property Photo
               </Typography>
+
               <Button
                 component="label"
                 sx={{
                   width: "fit-content",
-                  color: "#2eb480",
+                  color: "#2ed480",
                   textTransform: "capitalize",
                   fontSize: 16,
                 }}
               >
                 Upload *
                 <input
-                  type="file"
                   hidden
                   accept="image/*"
-                  onChange={(e) => {
-                    // @ts-ignore
-                    handleImageChange(e.target.files[0]);
+                  type="file"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    handleImageChange(e.target.files![0]);
                   }}
                 />
               </Button>
@@ -199,10 +205,11 @@ const Form = ({
               {propertyImage?.name}
             </Typography>
           </Stack>
+
           <CustomButton
             type="submit"
             title={formLoading ? "Submitting..." : "Submit"}
-            backgroundColor="#457be8"
+            backgroundColor="#475be8"
             color="#fcfcfc"
           />
         </form>

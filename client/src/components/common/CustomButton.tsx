@@ -10,9 +10,11 @@ const CustomButton = ({
   fullWidth,
   icon,
   handleClick,
+  disabled,
 }: CustomButtonProps) => {
   return (
     <Button
+      disabled={disabled}
       sx={{
         flex: fullWidth ? 1 : "unset",
         padding: "10px 15px",
